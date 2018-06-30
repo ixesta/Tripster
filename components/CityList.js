@@ -56,7 +56,7 @@ export default class CityList extends Component {
         );
     }
     _onPressButton = () => {
-        Alert.alert('I need data Terry!')
+        this.props.navigation.navigate('List')
     }
 }
 

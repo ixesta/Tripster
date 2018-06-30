@@ -2,6 +2,9 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import TabNavigator from './TabNavigator.js';
 import CityList from '../components/CityList'
+import List from '../components/List'
+import TimeLines from '../components/TimeLines'
+
 
 const RootStackNavigator = StackNavigator(
   {
@@ -14,6 +17,19 @@ const RootStackNavigator = StackNavigator(
         swipeEnabled: false
       }
     },
+    List: {
+      screen: List,
+      navigationOptions: {
+        swipeEnabled: false
+      }
+    },
+    TimeLines: {
+      screen: TimeLines,
+      navigationOptions: {
+        swipeEnabled: false
+      }
+    },
+  
   }
 );
 
