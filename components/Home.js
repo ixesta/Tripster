@@ -1,5 +1,6 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, Button} from 'react-native'
+import { TabNavigator } from 'react-navigation';
 
 
 export default class Home extends React.Component {
@@ -8,7 +9,11 @@ export default class Home extends React.Component {
     return (
      
       <View>
-          <Text>Home Screen</Text>
+          <Button
+          title= 'CityList'
+          onPress={() => this.props.navigation.navigate('CityList')}
+          >
+          </Button>
         </View>
     
     )

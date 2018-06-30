@@ -1,6 +1,7 @@
-import React from 'react';
-import Home from '../components/Home';
-import { TabNavigator } from 'react-navigation';
+import React from 'react'
+import Home from '../components/Home'
+import CityList from '../components/CityList'
+import { TabNavigator } from 'react-navigation'
 
 
 
@@ -15,7 +16,6 @@ export default TabNavigator(
     // CityList: {
     //   screen: CityList,
     //   navigationOptions: {
-    //     tabBarLabel: 'CityList',
     //     swipeEnabled: false
     //   }
     // },
