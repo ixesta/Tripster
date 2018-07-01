@@ -14,12 +14,6 @@ export default TabNavigator(
         tabBarLabel: 'Home',
       }
     },
-    // CityList: {
-    //   screen: CityList,
-    //   navigationOptions: {
-    //     swipeEnabled: false
-    //   }
-    // },
     // TimeLines: {
     //   screen: TimeLines,
     //   navigationOptions: {

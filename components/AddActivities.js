@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Image, Dimensions, StyleSheet, ImageBackground, TouchableHighlight, Alert, Text, Header } from 'react-native';
+import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text } from 'react-native';
+import { Font, AppLoading } from 'expo'
+import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
 import { Icon } from 'react-native-elements';
-import NavigationBar from 'react-native-navbar';
-import SelectActivities from './SelectActivities';
 import BottomNavBar from './BottomNavBar';
 import CityHeader from './CityHeader';
 
 
 export default class View3 extends Component {
   state = {
-    ativities: []
+    ativities: [],
+    fontsAreLoaded: false
   }
+
+  async componentWillMount() {
+    try {
+      await Font.loadAsync({
+        MaterialIcons
+      });
+      this.setState({ fontsAreLoaded: true });
+    } catch (error) {
+      console.log('error loading icon fonts', error);
+    }
+  }
+
+  
   render() {
+    if (!this.state.fontsAreLoaded) {
+
+      return <AppLoading />}
+    
     return (
+       
 
       <View style={styles.container}>
         {/* <SelectHoursDaily /> */}
@@ -41,17 +60,6 @@ export default class View3 extends Component {
       </View>
     );
   }
-
-  // fetchData = async () => {
-
-  //   const { data } = await axios.get(`database call sorted by city`)
-  //   return data;
-
-
-  // }
-  // componentDidMount = async () => {
-  //   const { activities } = await this.fetchData()
-  // }
 
 
   addActivity = (activity) => {

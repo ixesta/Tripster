@@ -12,7 +12,7 @@ export default class View3 extends Component {
     }
     return (
 
-
+      
       <ImageBackground style={styles.city} source={{ uri: header.avatar_url }} >
 
         <Text style={styles.text}>{header.name}</Text>
