@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text } from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
-import { Icon } from 'react-native-elements';
-import BottomNavBar from './BottomNavBar';
+import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
 import CityHeader from './CityHeader';
+
+
 
 
 export default class View3 extends Component {
@@ -30,12 +31,56 @@ export default class View3 extends Component {
 
       return <AppLoading />}
     
+    
+    const component1 = () => 
+    <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'call-split',
+          size: 15,
+          color: 'white'
+        }}
+      title='Map'
+      onPress={() => this.props.navigation.navigate('TimeLines')}
+    >
+    </Button>
+    const component2 = () => 
+      <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'view-list',
+          size: 15,
+          color: 'white'
+        }}
+        title='List'
+        onPress={() => this.props.navigation.navigate('List')}
+      >
+      </Button>
+    const component3 = () => 
+      <Button
+        buttonStyle={styles.button}
+        icon={{
+          name: 'launch',
+          size: 15,
+          color: 'white'
+        }}
+        title='Trip'
+        onPress={() => this.props.navigation.navigate('TimeLines')}
+      >
+      </Button>
+   
+   const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+
+
     return (
        
 
       <View style={styles.container}>
-        {/* <SelectHoursDaily /> */}
+        
         <CityHeader />
+        
+        <ButtonGroup buttonStyle={styles.button} buttons={buttons}/>
+        
         <ScrollView style={styles.container}>
           {list.map((activity, i) => {
             return (
@@ -56,7 +101,6 @@ export default class View3 extends Component {
             );
           })}
         </ScrollView>
-        <BottomNavBar />
       </View>
     );
   }
@@ -99,7 +143,20 @@ const styles = StyleSheet.create({
   popup: {
     justifyContent: 'center'
 
-  }
+  },
+  button: {
+    backgroundColor: 'grey',
+    borderColor: 'grey',
+    borderWidth: 5,
+    borderRadius: 10
+    
+  },
+  buttongroup: {
+    backgroundColor: 'grey',
+    borderColor: 'grey',
+    borderWidth: 5,
+    borderRadius: 10
+  },
 });
 
 const list = [
