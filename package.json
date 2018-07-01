@@ -34,6 +34,7 @@
     "react-native-elements": "^0.19.1",
     "react-native-fullwidth-image": "^0.1.2",
     "react-native-modal-datetime-picker": "^5.1.0",
+    "react-native-navbar": "^2.1.0",
     "react-native-open-maps": "^0.2.2",
     "react-native-parallax": "^0.3.0",
     "react-native-swipe-cards": "^0.1.1",

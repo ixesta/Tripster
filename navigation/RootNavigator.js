@@ -6,6 +6,7 @@ import List from '../components/List'
 import TimeLines from '../components/TimeLines'
 
 
+
 const RootStackNavigator = StackNavigator(
   {
     Main: {
@@ -29,7 +30,7 @@ const RootStackNavigator = StackNavigator(
         swipeEnabled: false
       }
     },
-  
+    
   }
 );
 
