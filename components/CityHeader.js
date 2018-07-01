@@ -8,7 +8,7 @@ export default class View3 extends Component {
   render() {
     let header = {
       name: 'London',
-      avatar_url: 'https://cdn.londonandpartners.com/asset/20adda9d08e8480c6dbbfcf30fbcabdb.jpg'
+      avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.30.50_PM.png'
     }
     return (
 
