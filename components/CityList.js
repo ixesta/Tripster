@@ -57,7 +57,7 @@ export default class CityList extends Component {
         );
     }
     _onPressButton = (name) => {
-        this.props.navigation.navigate('Test', { city: name })
+        this.props.navigation.navigate('AddActivities', { city: name })
     }
 }
 

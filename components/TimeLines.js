@@ -36,6 +36,7 @@ export default class TimeLines extends React.Component {
     }
 
     componentDidMount() {
+        
         const NumOfDays = Math.round(this.state.activities.length / this.state.limit)
         const buttons = []
         for (let i = 0; i < NumOfDays; i++) {

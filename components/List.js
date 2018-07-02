@@ -13,6 +13,7 @@ export default class List extends Component {
 
     componentDidMount(){
         const { activities } = this.props.navigation.state.params
+        console.log(activities)
         this.setState({activities})
     }
     
@@ -45,7 +46,7 @@ export default class List extends Component {
                
                     <Button
                         title='TimeLines'
-                        onPress={() => this.props.navigation.navigate('TimeLines')}
+                    onPress={() => this.props.navigation.navigate('TimeLines', { activities: activities})}
                     >
                     </Button>
                
