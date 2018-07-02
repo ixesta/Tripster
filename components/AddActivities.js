@@ -10,7 +10,7 @@ import CityHeader from './CityHeader';
 
 export default class View3 extends Component {
   state = {
-    ativities: [],
+    activities: [],
     fontsAreLoaded: false
   }
 
@@ -110,14 +110,9 @@ export default class View3 extends Component {
     const { activities } = this.state
     if (activities.length === 0) {
       this.setState({ activities: [activity] })
-    } else {
-      const newActivities = [...activities]
-      activities.map(stateActivity => {
-        activity === stateActivity ? Aler.alert('Activity already added') : this.setState({ activities: [...newActivities, activity] })
-      })
-
     }
-
+    const newActivities = [...activities]
+    this.setState({ activities: [...newActivities, activity] })
   }
 
 }
