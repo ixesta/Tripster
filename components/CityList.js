@@ -3,27 +3,27 @@ import { View, ScrollView, ImageBackground, TouchableHighlight, StyleSheet, Text
 
 const list = [
     {
-        name: 'London',
+        name: 'london',
         avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.30.50_PM.png'
 
     },
     {
-        name: 'Manchester',
+        name: 'manchester',
         avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394297/Screen_Shot_2018-06-30_at_10.30.06_PM.png'
 
     },
     {
-        name: 'Liverpool',
+        name: 'london',
         avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394314/Screen_Shot_2018-06-30_at_10.29.20_PM.png'
 
     },
     {
-        name: 'Leeds',
+        name: 'manchester',
         avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.28.08_PM.png'
 
     },
     {
-        name: 'Birmingham',
+        name: 'london',
         avatar_url: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530394295/Screen_Shot_2018-06-30_at_10.26.46_PM.png'
 
     }
@@ -38,8 +38,9 @@ export default class CityList extends Component {
             <View>
                 <ScrollView>
                     {list.map((city, i) => {
+                        
                         return (
-                            <TouchableHighlight key={`touch${i}`} onPress={this._onPressButton} underlayColor="white">
+                            <TouchableHighlight key={`touch${i}`} onPress={() => this._onPressButton(`${city.name}`)} underlayColor="white">
                                 <ImageBackground
                                     key={i}
                                     style={styles.image}
@@ -55,8 +56,8 @@ export default class CityList extends Component {
 
         );
     }
-    _onPressButton = () => {
-        this.props.navigation.navigate('AddActivities')
+    _onPressButton = (name) => {
+        this.props.navigation.navigate('Test', { city: name })
     }
 }
 

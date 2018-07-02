@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Button, Image, StyleSheet, TouchableHighlight, Text } from 'react-native';
-import { Font } from 'expo'
-import Zocial from '../node_modules/@expo/vector-icons/fonts/Zocial.ttf'
 
-Font.loadAsync('Zocial', '../node_modules/@expo/vector-icons/fonts/Zocial.ttf')
+
+
+
 
 export default class Home extends React.Component {
 
