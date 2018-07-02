@@ -6,53 +6,36 @@ import Swipeout from 'react-native-swipeout';
 
 
 export default class List extends Component {
-    state = {
-        names: [
-            {
-                id: 0,
-                name: 'London Eye',
-            },
-            {
-                id: 1,
-                name: 'Big Ben',
-            },
-            {
-                id: 2,
-                name: 'Tower of London',
-            },
-            {
-                id: 3,
-                name: 'Buckingham Palace',
-            }
-        ]
+  
+    state={
+        activities:[]
     }
 
-    componentDidUpdate(prevProps, prevState) {
-
-        if (prevState.names !== this.state.names) {
-            this.setState({
-                names: this.state.names
-            })
-        }
+    componentDidMount(){
+        const { activities } = this.props.navigation.state.params
+        this.setState({activities})
     }
-
+    
 
     render() {
+        const { activities } = this.state
+        
         return (
             <View>
-                {
-                    this.state.names.map((item, i) => (
+                {   
+                    activities.length >= 1 &&
+                    activities.map((item, i) => (
                         <Swipeout key={i} style={styles.swipeoutView} right={[
                             {
                                 text: 'delete',
-                                onPress: () => this.deleteAttraction(`${i}`),
+                                onPress: () => this.deleteAttraction(i),
                                 className: 'custom-class-2',
                                 backgroundColor: '#EA0000'
                             }
                         ]}>
                             <View key={`list${i}`} style={styles.swipeoutView}>
                                 < Text style={styles.text} >
-                                    {item.name}
+                                    {item.title}
                                 </Text>
                             </View>
                         </Swipeout>
@@ -71,14 +54,18 @@ export default class List extends Component {
             </View>
         )
     }
-    deleteAttraction = (id) => {
-        console.log(id)
-        const attraction = [...this.state.names]
-        const newList = attraction.filter(name => name !== attraction[id])
+
+    deleteAttraction = (i) => {
+        const { deleteAttraction } = this.props.navigation.state.params
+        deleteAttraction(i)
+        const activities = [...this.state.activities]
+        activities.splice(i, 1)
         this.setState({
-            names: newList
+            activities
         })
+
     }
+    
 }
 
 

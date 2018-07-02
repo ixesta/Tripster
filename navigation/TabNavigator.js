@@ -1,7 +1,6 @@
 import React from 'react'
 import Home from '../components/Home'
 import TimeLines from '../components/TimeLines'
-import CityList from '../components/CityList'
 import { TabNavigator } from 'react-navigation'
 
 
@@ -14,13 +13,6 @@ export default TabNavigator(
         tabBarLabel: 'Home',
       }
     },
-    // TimeLines: {
-    //   screen: TimeLines,
-    //   navigationOptions: {
-    //     tabBarLabel: 'TimeLines',
-    //     swipeEnabled: false
-    //   }
-    // },
   },
   {
     navigationOptions: {

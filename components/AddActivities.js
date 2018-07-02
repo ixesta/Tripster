@@ -8,11 +8,13 @@ import CityHeader from './CityHeader';
 
 
 
-export default class View3 extends Component {
+export default class AddActivities extends Component {
   state = {
     activities: [],
     fontsAreLoaded: false
   }
+
+
 
   async componentWillMount() {
     try {
@@ -31,7 +33,6 @@ export default class View3 extends Component {
 
       return <AppLoading />}
     
-    
     const component1 = () => 
     <Button
         buttonStyle={styles.button}
@@ -41,7 +42,7 @@ export default class View3 extends Component {
           color: 'white'
         }}
       title='Map'
-      onPress={() => this.props.navigation.navigate('TimeLines')}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) }
     >
     </Button>
     const component2 = () => 
@@ -53,7 +54,7 @@ export default class View3 extends Component {
           color: 'white'
         }}
         title='List'
-        onPress={() => this.props.navigation.navigate('List')}
+        onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
       >
       </Button>
     const component3 = () => 
@@ -105,6 +106,7 @@ export default class View3 extends Component {
     );
   }
 
+  call = () => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) 
 
   addActivity = (activity) => {
     const { activities } = this.state
@@ -113,6 +115,15 @@ export default class View3 extends Component {
     }
     const newActivities = [...activities]
     this.setState({ activities: [...newActivities, activity] })
+  }
+
+  deleteAttraction = (i) => {
+    const activities = [...this.state.activities]
+    activities.splice(i, 1)  
+    this.setState({
+      activities
+    })
+  
   }
 
 }
