@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   text: {
     alignSelf: 'center',
     color: '#29a8c8',
-    fontFamily: 'Noteworthy',
+    // fontFamily: 'Noteworthy',
     fontSize: 50
   },
   skyline: {
