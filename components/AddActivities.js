@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text} from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
-import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
+import { Card, ListItem, Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
 import CityHeader from './CityHeader';
 
 
@@ -89,18 +89,41 @@ export default class AddActivities extends Component {
           {list.map((activity, i) => {
             return (
 
-              <ImageBackground
-                key={i}
-                style={styles.image}
-                source={{ uri: activity.imageUrl }}
-              >
+              <Card
+              key={i}
+                title={activity.title}
+                image={{ uri: activity.imageUrl }}>
+                <Text style={{ marginBottom: 10 }}>
+                  {activity.description}
+                </Text>
+                
+                <Button onPress={() => { this.addActivity(activity) }}
+                  icon={<Icon name='add' style={styles.addIcon} />}
+                  backgroundColor='#00BFFF'
+                  // buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+                  buttonStyle={styles.button}
+                  title='add to list'
+                  
+                  />
+                  
+              </Card>
 
-                <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
-                  <Icon name='add' color='#00BFFF' style={styles.addIcon} />
-                </TouchableHighlight>
-                <Text style={styles.text}>{activity.title}</Text>
 
-              </ImageBackground>
+
+
+
+              // <ImageBackground
+              //   key={i}
+              //   style={styles.image}
+              //   source={{ uri: activity.imageUrl }}
+              // >
+
+              //   <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
+              //     <Icon name='add' color='#00BFFF' style={styles.addIcon} />
+              //   </TouchableHighlight>
+              //   <Text style={styles.text}>{activity.title}</Text>
+
+              // </ImageBackground>
 
             );
           })}
@@ -180,6 +203,7 @@ const styles = StyleSheet.create({
     borderColor: 'yellow',
     borderRadius: 1,
     borderBottomRightRadius: 200
+    
   },
   buttongroup: {
     backgroundColor: 'black',
@@ -188,6 +212,6 @@ const styles = StyleSheet.create({
 
   addIcon: {
     marginLeft: 3,
-    marginTop: 120,
+    marginTop: 120
   }
 });

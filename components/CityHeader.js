@@ -5,6 +5,7 @@ import { View, ScrollView, Image, Dimensions, StyleSheet, ImageBackground, Touch
 
 
 export default class View3 extends Component {
+  
   render() {
     let header = {
       name: 'London',
