@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text} from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
 import { Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
@@ -17,24 +17,17 @@ export default class AddActivities extends Component {
   }
 
   componentDidMount = async () => {
-    const { city } = this.props.navigation.state.params
-    const { items } = await this.getPlaces(city)
-    await Font.loadAsync({ MaterialIcons});
-    this.setState({ fontsAreLoaded: true, items})
 
+      try {
+        const { city } = this.props.navigation.state.params
+        const { items } = await this.getPlaces(city)
+        await Font.loadAsync({MaterialIcons});
+        this.setState({ fontsAreLoaded: true, items })
+    } catch (error) {
+      console.log('error loading icon fonts', error);
+    }
   }
 
-
-  // async componentWillMount() {
-  //   try {
-  //     await Font.loadAsync({
-  //       MaterialIcons
-  //     });
-  //     this.setState({ fontsAreLoaded: true });
-  //   } catch (error) {
-  //     console.log('error loading icon fonts', error);
-  //   }
-  // }
 
   
   render() {
@@ -47,10 +40,10 @@ export default class AddActivities extends Component {
         buttonStyle={styles.button}
         icon={{
           name: 'call-split',
-          size: 15,
-          color: 'white'
+          size: 35,
+          color: '#00BFFF'
         }}
-      title='Map'
+      // title='Map'
         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) }
     >
     </Button>
@@ -58,11 +51,11 @@ export default class AddActivities extends Component {
       <Button
         buttonStyle={styles.button}
         icon={{
-          name: 'view-list',
-          size: 15,
-          color: 'white'
+          name: 'format-list-bulleted',
+          size: 35,
+          color: '#00BFFF'
         }}
-        title='List'
+        // title='List'
         onPress={() => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction })}
       >
       </Button>
@@ -70,11 +63,11 @@ export default class AddActivities extends Component {
       <Button
         buttonStyle={styles.button}
         icon={{
-          name: 'launch',
-          size: 15,
-          color: 'white'
+          name: 'flight-takeoff',
+          size: 35,
+          color: '#00BFFF'
         }}
-        title='Trip'
+        // title='Trip'
         onPress={() => this.props.navigation.navigate('TimeLines')}
       >
       </Button>
@@ -103,7 +96,7 @@ export default class AddActivities extends Component {
               >
 
                 <TouchableHighlight onPress={() => { this.addActivity(activity) }}>
-                  <Icon name='attachment' color='#00aced' style={styles.addIcon} />
+                  <Icon name='add' color='#00BFFF' style={styles.addIcon} />
                 </TouchableHighlight>
                 <Text style={styles.text}>{activity.title}</Text>
 
@@ -116,7 +109,7 @@ export default class AddActivities extends Component {
     );
   }
 
-  // call = () => this.props.navigation.navigate('List', { activities: this.state.activities, deleteAttraction: this.deleteAttraction }) 
+
 
   addActivity = (activity) => {
     const { activities } = this.state
@@ -157,36 +150,44 @@ const styles = StyleSheet.create({
 
   container: {
     alignSelf: 'stretch',
-    backgroundColor: '#00BFFF'
+    backgroundColor: 'black',
+    borderBottomRightRadius: 200
+
 
   },
   image: {
     flex: 2,
     height: 150,
-    borderBottomWidth: 2,
-    borderBottomColor: '#00BFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: 'yellow',
+    flexDirection: 'row'
+
   },
+
   text: {
     textAlign: 'center',
     marginTop: 80,
-    color: '#00BFFF'
+    color: '#00BFFF',
+    fontSize: 25,
   },
+
   popup: {
     justifyContent: 'center'
-
   },
+
   button: {
-    backgroundColor: 'grey',
-    borderColor: 'grey',
-    borderWidth: 5,
-    borderRadius: 10
-    
+    backgroundColor: 'black',
+    borderColor: 'yellow',
+    borderRadius: 1,
+    borderBottomRightRadius: 200
   },
   buttongroup: {
-    backgroundColor: 'grey',
-    borderColor: 'grey',
-    borderWidth: 5,
-    borderRadius: 10
+    backgroundColor: 'black',
+    borderColor: 'black',
   },
-});
 
+  addIcon: {
+    marginLeft: 3,
+    marginTop: 120,
+  }
+});
