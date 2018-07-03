@@ -13,7 +13,6 @@ export default class List extends Component {
 
     componentDidMount(){
         const { activities } = this.props.navigation.state.params
-        console.log(activities)
         this.setState({activities})
     }
     
@@ -29,7 +28,7 @@ export default class List extends Component {
                         <Swipeout key={i} style={styles.swipeoutView} right={[
                             {
                                 text: 'delete',
-                                onPress: () => this.deleteAttraction(i),
+                                onPress: () => this.deleteAttraction(i, item),
                                 className: 'custom-class-2',
                                 backgroundColor: '#EA0000'
                             }
@@ -56,9 +55,9 @@ export default class List extends Component {
         )
     }
 
-    deleteAttraction = (i) => {
+    deleteAttraction = (i, item) => {
         const { deleteAttraction } = this.props.navigation.state.params
-        deleteAttraction(i)
+        deleteAttraction(item)
         const activities = [...this.state.activities]
         activities.splice(i, 1)
         this.setState({

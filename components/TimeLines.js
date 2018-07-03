@@ -6,29 +6,139 @@ import { timelinesGenerator } from '../utils'
 
 export default class TimeLines extends React.Component {
     state = {
-        activities: [
-            { id: 1, time: '09:00', title: 'London Eye', description: 'The London Eye, is a giant Ferris wheel on the South Bank of the River Thames in London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193203/Screen_Shot_2018-06-28_at_2.17.08_PM.png' },
-            { id: 2, time: '11:00', title: 'Tower of London', description: 'The Tower of London is a historic castle located on the north bank of the River Thames in central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.32_PM.png' },
-            { id: 3, time: '13:00', title: 'National Gallery', description: 'The National Gallery is an art museum Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.44_PM.png' },
-            { id: 4, time: '15:00', title: 'Natural History Museum', description: 'The Natural History Museum in London exhibits a vast range of specimens from various segments of natural history. ', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.18.01_PM.png' },
-            { id: 5, time: '17:00', title: 'Hyde Park', description: 'Hyde Park is a Grade I-listed major park in Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193251/Screen_Shot_2018-06-28_at_2.18.32_PM.png' },
-            { id: 6, time: '09:00', title: 'London Eye', description: 'The London Eye, is a giant Ferris wheel on the South Bank of the River Thames in London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193203/Screen_Shot_2018-06-28_at_2.17.08_PM.png' },
-            { id: 7, time: '11:00', title: 'Tower of London', description: 'The Tower of London is a historic castle located on the north bank of the River Thames in central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.32_PM.png' },
-            { id: 8, time: '13:00', title: 'National Gallery', description: 'The National Gallery is an art museum Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.44_PM.png' }
-            // { id: 9, time: '15:00', title: 'Natural History Museum', description: 'The Natural History Museum in London exhibits a vast range of specimens from various segments of natural history. ', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.18.01_PM.png' },
-            // { id: 10, time: '17:00', title: 'Hyde Park', description: 'Hyde Park is a Grade I-listed major park in Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193251/Screen_Shot_2018-06-28_at_2.18.32_PM.png' },
-            // { id: 11, time: '09:00', title: 'London Eye', description: 'The London Eye, is a giant Ferris wheel on the South Bank of the River Thames in London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193203/Screen_Shot_2018-06-28_at_2.17.08_PM.png' },
-            // { id: 12, time: '11:00', title: 'Tower of London', description: 'The Tower of London is a historic castle located on the north bank of the River Thames in central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.32_PM.png' },
-            // { id: 13, time: '13:00', title: 'National Gallery', description: 'The National Gallery is an art museum Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.44_PM.png' },
-            // { id: 14, time: '15:00', title: 'Natural History Museum', description: 'The Natural History Museum in London exhibits a vast range of specimens from various segments of natural history. ', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.18.01_PM.png' },
-            // { id: 15, time: '17:00', title: 'Hyde Park', description: 'Hyde Park is a Grade I-listed major park in Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193251/Screen_Shot_2018-06-28_at_2.18.32_PM.png' },
-            // { id: 16, time: '09:00', title: 'London Eye', description: 'The London Eye, is a giant Ferris wheel on the South Bank of the River Thames in London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193203/Screen_Shot_2018-06-28_at_2.17.08_PM.png' },
-            // { id: 17, time: '11:00', title: 'Tower of London', description: 'The Tower of London is a historic castle located on the north bank of the River Thames in central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.32_PM.png' },
-            // { id: 18, time: '13:00', title: 'National Gallery', description: 'The National Gallery is an art museum Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.17.44_PM.png' },
-            // { id: 19, time: '15:00', title: 'Natural History Museum', description: 'The Natural History Museum in London exhibits a vast range of specimens from various segments of natural history. ', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193252/Screen_Shot_2018-06-28_at_2.18.01_PM.png' },
-            // { id: 20, time: '17:00', title: 'Hyde Park', description: 'Hyde Park is a Grade I-listed major park in Central London.', imageUrl: 'https://res.cloudinary.com/dbg0gmsjs/image/upload/v1530193251/Screen_Shot_2018-06-28_at_2.18.32_PM.png' }
-
-        ],
+        activities: {
+            Day1:
+                [{
+                    id: 1,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '09:00',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 2,
+                    title: 'Manchester Cathedral',
+                    time: '09:04',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 3,
+                    title: 'Royal Exchange Theatre',
+                    time: '11:05',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 4,
+                    title: 'Manchester Town Hall',
+                    time: '13:09',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 5,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '15:13',
+                    description: '',
+                    imageUrl: ''
+                }],
+            Day2:
+                [{
+                    id: 1,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '09:00',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 2,
+                    title: 'Manchester Arndale',
+                    time: '09:08',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 3,
+                    title: 'Palace Theatre',
+                    time: '11:14',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 4,
+                    title: 'Manchester Art Gallery',
+                    time: '13:17',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 5,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '15:20',
+                    description: '',
+                    imageUrl: ''
+                }],
+            Day3:
+                [{
+                    id: 1,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '09:00',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 2,
+                    title: 'John Rylands Library',
+                    time: '09:06',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 3,
+                    title: 'Museum of Science and Industry',
+                    time: '11:10',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 4,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '13:18',
+                    description: '',
+                    imageUrl: ''
+                }],
+            Day4:
+                [{
+                    id: 1,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '09:00',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 2,
+                    title: 'Manchester Arena',
+                    time: '09:03',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 3,
+                    title: 'The Printworks',
+                    time: '11:04',
+                    description: '',
+                    imageUrl: ''
+                },
+                {
+                    id: 4,
+                    title: 'CROWNE PLAZA HOTEL',
+                    time: '13:06',
+                    description: '',
+                    imageUrl: ''
+                }],
+            buttons: ['Day 1', 'Day 2', 'Day 3', 'Day 4']
+        },
         limit: 2,
         timeline: [],
         buttons: 0,
@@ -37,36 +147,30 @@ export default class TimeLines extends React.Component {
 
     componentDidMount() {
         
-        const NumOfDays = Math.round(this.state.activities.length / this.state.limit)
-        const buttons = []
-        for (let i = 0; i < NumOfDays; i++) {
-            buttons.push(`Day${i + 1}`)
-        }
+        const buttons = [...this.state.activities.buttons]
         this.setState({ buttons })
 
     }
 
 
     render() {
-
-        const NumOfDays = Math.round(this.state.activities.length / this.state.limit)
-        const buttons = []
-        for (let i = 0; i < NumOfDays; i++) {
-            buttons.push(`Day${i + 1}`)
-        }
-
+    
+        const {buttons} = this.state
+        
         return (
             <View style={styles.container}>
 
-                {this.state.timeline.length > 1 &&
-                    <SingleTimeLine timeline={this.state.timeline} generateTimeLine={this.state.generateTimeLine} />
-                }
-                <ButtonGroup
-                    onPress={this.generateTimeLine}
-                    selectedIndex={this.state.selectedIndex}
-                    buttons={buttons}
-                    containerStyle={{ height: 50 }}
-                />
+                
+                
+                
+            {this.state.buttons.length >= 1 &&
+            <ButtonGroup
+                onPress={this.generateTimeLine}
+                selectedIndex={this.state.selectedIndex}
+                buttons={buttons}
+                containerStyle={{ height: 50 }}
+            />}
+                
             </View>
         );
     }

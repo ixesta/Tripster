@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, ImageBackground, TouchableHighlight, Text} from 'react-native';
+import { View, ScrollView, StyleSheet, Linking, ImageBackground, TouchableHighlight, Text} from 'react-native';
 import { Font, AppLoading } from 'expo'
 import MaterialIcons from '../node_modules/@expo/vector-icons/fonts/MaterialIcons.ttf'
 import { Card, ListItem, Icon, ButtonGroup, Button, CustomIcon } from 'react-native-elements';
@@ -13,7 +13,8 @@ export default class AddActivities extends Component {
   state = {
     items: [],
     activities: [],
-    fontsAreLoaded: false
+    fontsAreLoaded: false,
+    bookmark: false
   }
 
   componentDidMount = async () => {
@@ -21,12 +22,17 @@ export default class AddActivities extends Component {
       try {
         const { city } = this.props.navigation.state.params
         const { items } = await this.getPlaces(city)
-        await Font.loadAsync({MaterialIcons});
+        await Font.loadAsync({
+          MaterialIcons,
+          'Pacifico-Regular': require('../assets/fonts/Pacifico-Regular.ttf')
+        });
         this.setState({ fontsAreLoaded: true, items })
     } catch (error) {
       console.log('error loading icon fonts', error);
     }
   }
+
+
 
 
   
@@ -93,18 +99,28 @@ export default class AddActivities extends Component {
               key={i}
                 title={activity.title}
                 image={{ uri: activity.imageUrl }}>
-                <Text style={{ marginBottom: 10 }}>
+                <Text style={{ fontSize: 12, marginBottom: 10 }}>
                   {activity.description}
                 </Text>
                 
-                <Button onPress={() => { this.addActivity(activity) }}
-                  icon={<Icon name='add' style={styles.addIcon} />}
-                  backgroundColor='#00BFFF'
-                  // buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                  buttonStyle={styles.button}
-                  title='add to list'
-                  
-                  />
+               
+
+                {this.state.bookmark === false &&
+                <TouchableHighlight key={`add${i}`} onPress={() => { this.addActivity(activity) }}>
+                  <Icon name='bookmark-border' color='#00BFFF' style={styles.addIcon} />
+                </TouchableHighlight>}
+
+                {this.state.bookmark === true &&
+                  <TouchableHighlight key={`add${i}`} onPress={() => { this.deleteAttraction(activity) }}>
+                    <Icon name='bookmark' color='#00BFFF' style={styles.addIcon} />
+                  </TouchableHighlight>}
+
+                <TouchableHighlight onPress={() => { Linking.openURL(`${activity.link}`) }}>
+                  <Icon name='map' color='#00BFFF' />
+                </TouchableHighlight>
+              
+
+
                   
               </Card>
 
@@ -137,17 +153,20 @@ export default class AddActivities extends Component {
   addActivity = (activity) => {
     const { activities } = this.state
     if (activities.length === 0) {
-      this.setState({ activities: [activity] })
+      this.setState({ activities: [activity], bookmark: true })
     }
     const newActivities = [...activities]
-    this.setState({ activities: [...newActivities, activity] })
+    this.setState({ activities: [...newActivities, activity], bookmark:true })
+
   }
 
-  deleteAttraction = (i) => {
+  deleteAttraction = (activity) => {
     const activities = [...this.state.activities]
-    activities.splice(i, 1)  
+    const index = activities.indexOf(activity)
+    activities.splice(index, 1)  
     this.setState({
-      activities
+      activities,
+      bookmark: false
     })
   
   }
@@ -214,4 +233,5 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginTop: 120
   }
+
 });
