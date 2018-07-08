@@ -20,14 +20,14 @@ Tell me how.
 
   
 
-##Introducing 'Tripster'.
+## Introducing 'Tripster'.
 
 With Tripster you select a city you'd like to go to, and you get an immediate list of that city's attractions. You pick what you want to see, you pick where you're going to stay, and within seconds Tripster will generate a day-by-day layout of your holiday, showing you the best way to visit everything you want to visit and the travel time between each point.
 
 
 
 
-##Prerequisites
+## Prerequisites
 
   
 
@@ -41,7 +41,7 @@ If you don't have it, I recommend to follow this tutorial: https://changelog.com
 
   
 
-##Installing
+## Installing
 
   
 
@@ -63,8 +63,11 @@ Follow the instructions on your terminal, you'll need either an Android emulator
   
   
 
-##Contact us
+## Contact us
 
   
 
 Feel free to open an issue for any setup query
+
+
+
